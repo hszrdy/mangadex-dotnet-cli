@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/MangaDexDotnetCli/MangaDexDotnetCli.csproj" />
+  </Folder>
+</Solution>
