@@ -16,10 +16,12 @@ namespace MangaDexDotnetCli
 
             MangaDexApi mangaDexInstance = new MangaDexApi();
             Search searchInstance = new Search(mangaDexInstance);
+            Download downloadInstance = new Download(mangaDexInstance);
 
             RootCommand rootCommand = new("MangaDexDotnetCli");
 
             rootCommand.Subcommands.Add(searchInstance.searchCommand);
+            rootCommand.Subcommands.Add(downloadInstance.downloadCommand);
 
             rootCommand.Parse(args).Invoke();
         }
