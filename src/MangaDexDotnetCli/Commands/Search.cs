@@ -30,11 +30,12 @@ namespace MangaDexDotnetCli.Commands
 
             builtCommand.SetAction(parseResult =>
             {
-               string query = parseResult.GetRequiredValue<string>(queryArgument);
+                string query = parseResult.GetRequiredValue<string>(queryArgument);
                 int limit = parseResult.GetValue<int>(limitOption);
-
-                //placeholder logic for calling the MangaDexApi search function with the query and limit
+                
+                HttpResponseMessage response = _mangaDexInstance.GetManga(query).Result;
                 Console.WriteLine($"Searching for manga with query: {query} and limit: {limit}"); 
+                Console.WriteLine($"Response Status Code: {response.StatusCode}");
             });
 
             return builtCommand;
