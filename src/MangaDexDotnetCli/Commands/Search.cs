@@ -1,5 +1,6 @@
 using System.CommandLine;
 using MangaDexDotnetCli.Api;
+using MangaDexDotnetCli.Models;
 
 namespace MangaDexDotnetCli.Commands
 {
@@ -33,9 +34,10 @@ namespace MangaDexDotnetCli.Commands
                 string query = parseResult.GetRequiredValue<string>(queryArgument);
                 int limit = parseResult.GetValue<int>(limitOption);
                 
-                HttpResponseMessage response = _mangaDexInstance.GetManga(query).Result;
-                Console.WriteLine($"Searching for manga with query: {query} and limit: {limit}"); 
-                Console.WriteLine($"Response Status Code: {response.StatusCode}");
+                Manga response = _mangaDexInstance.GetManga(query).Result;
+
+                response.DisplayMangaInfo();
+
             });
 
             return builtCommand;
